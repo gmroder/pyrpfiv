@@ -174,3 +174,10 @@ This tool is provided for educational and research purposes only. The RPF file f
 ## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Acknowledgments
+
+Special thanks to:
+
+- [ahmed605's SparkIV](https://github.com/ahmed605/SparkIV) for providing valuable reference for RPF file format handling
+- [dexyfex's CodeWalker](https://github.com/dexyfex/CodeWalker) for providing additional technical insights into the file format
