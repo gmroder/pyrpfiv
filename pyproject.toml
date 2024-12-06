@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "pyrpfiv"
+version = "0.1.0"
+description = "A Python library for parsing and modifying RPF files for GTA IV."
+authors = ["gmroder"]
+license = "MIT"
+readme = "README.md"
+homepage = "https://github.com/gmroder/pyrpfiv"
+repository = "https://github.com/gmroder/pyrpfiv"
+include = [
+    "pyrpfiv/hashes.ini"
+]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+pycryptodome = "^3.19.0"
+
+[tool.poetry.dev-dependencies]
+pytest = "^7.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
