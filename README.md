@@ -50,7 +50,7 @@ pip install pyrpfiv
 
 - Python 3.8 or higher
 - pycryptodome >= 3.19.0
-- GTA IV executable version 1.0.8.0 (other versions are not supported)
+- GTA IV executable version 1.0.8.0 or 1.2.0.43 (other versions are not supported)
 - hashes.ini file in working directory (for filename resolution)
 
 ## Basic Usage
@@ -61,7 +61,7 @@ from pyrpfiv import RPFParser
 # Initialize parser with RPF file and GTA IV executable path
 parser = RPFParser(
     rpf_filename="path/to/your.rpf",
-    gtaiv_exe_path="path/to/gtaiv.exe"  # Must be version 1.0.8.0
+    gtaiv_exe_path="path/to/gtaiv.exe"  # Must be version 1.0.8.0 or 1.2.0.43
 )
 ```
 
