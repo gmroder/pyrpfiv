@@ -2,28 +2,37 @@ import os
 import hashlib
 from Crypto.Cipher import AES
 
-from .constants import KEY_OFFSET, EXPECTED_KEY_SHA1
+from .constants import KEY_OFFSETS, KEY_SHA1S
 from .exceptions import AESKeyExtractionError, TOCDecryptionError
 
 
+def try_extract_key(exe_path, offset, expected_sha1):
+    """Helper function to try extracting key from a specific offset."""
+    with open(exe_path, 'rb') as f:
+        f.seek(offset)
+        possible_key = f.read(32)
+        if len(possible_key) != 32:
+            return None
+        key_sha1 = hashlib.sha1(possible_key).hexdigest().upper()
+        if key_sha1 == expected_sha1:
+            return possible_key
+    return None
+
+
 def extract_aes_key(exe_path):
-    """Extracts the AES key from GTAIV.exe."""
+    """Extracts the AES key from GTAIV.exe, supporting multiple versions."""
     if not os.path.exists(exe_path):
         raise AESKeyExtractionError(f"GTAIV.exe not found at path: {exe_path}")
 
     print(f"Extracting AES key from {exe_path}...")
     try:
-        with open(exe_path, 'rb') as f:
-            f.seek(KEY_OFFSET)
-            possible_key = f.read(32)
-            if len(possible_key) != 32:
-                raise AESKeyExtractionError('Could not read 32 bytes at the expected key offset.')
-            key_sha1 = hashlib.sha1(possible_key).hexdigest().upper()
-            if key_sha1 == EXPECTED_KEY_SHA1:
-                print(f"AES key found and verified at offset 0x{KEY_OFFSET:X}.")
-                return possible_key
-            else:
-                raise AESKeyExtractionError('AES key SHA1 hash does not match the expected value.')
+        for version, offset in KEY_OFFSETS.items():
+            key = try_extract_key(exe_path, offset, KEY_SHA1S[version])
+            if key:
+                print(f"AES key found and verified at offset 0x{offset:X} (Version {version}).")
+                return key
+
+        raise AESKeyExtractionError('Could not find valid AES key at any known offset.')
     except Exception as e:
         raise AESKeyExtractionError(f'Error extracting AES key: {e}')
 
