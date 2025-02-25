@@ -50,7 +50,7 @@ pip install pyrpfiv
 
 - Python 3.8 or higher
 - pycryptodome >= 3.19.0
-- GTA IV executable version 1.0.8.0 or 1.2.0.43 (other versions are not supported)
+- GTA IV executable version 1.0.8.0, 1.2.0.43, or 1.2.0.59 (other versions are not supported)
 - hashes.ini file in working directory (for filename resolution)
 
 ## Basic Usage
@@ -61,7 +61,7 @@ from pyrpfiv import RPFParser
 # Initialize parser with RPF file and GTA IV executable path
 parser = RPFParser(
     rpf_filename="path/to/your.rpf",
-    gtaiv_exe_path="path/to/gtaiv.exe"  # Must be version 1.0.8.0 or 1.2.0.43
+    gtaiv_exe_path="path/to/gtaiv.exe"  # Must be version 1.0.8.0, 1.2.0.43, or 1.2.0.59
 )
 ```
 
@@ -76,7 +76,7 @@ parser = RPFParser(rpf_filename: str, gtaiv_exe_path: str)
 ```
 
 - `rpf_filename`: Path to the RPF file you want to work with
-- `gtaiv_exe_path`: Path to GTA IV executable version 1.0.8.0 (needed for AES key extraction)
+- `gtaiv_exe_path`: Path to GTA IV executable (versions 1.0.8.0, 1.2.0.43, or 1.2.0.59 supported for AES key extraction)
 
 #### File Operations
 
@@ -160,7 +160,7 @@ except FileNotFoundInRPFError as e:
 
 ### Version Support
 
-Currently, only GTA IV version 1.0.8.0 is supported. This is because the AES key extraction is specifically tailored for this version of the executable. Other versions of GTA IV will not work with this library.
+Currently, GTA IV versions 1.0.8.0, 1.2.0.43, and 1.2.0.59 are supported. The AES key extraction is specifically tailored for these versions of the executable. Other versions of GTA IV will not work with this library.
 
 ## Disclaimer
 
@@ -168,7 +168,7 @@ This tool is provided for educational and research purposes only. The RPF file f
 
 1. Respect Rockstar Games' intellectual property rights
 2. Comply with Rockstar Games' terms of service and EULA
-3. Only use this tool with legally obtained copies of GTA IV version 1.0.8.0
+3. Only use this tool with legally obtained copies of GTA IV versions 1.0.8.0, 1.2.0.43, or 1.2.0.59
 4. Not use this tool for unauthorized distribution or modification of game files
 
 ## License
