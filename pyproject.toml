@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "pyrpfiv"
-version = "0.1.2"
+version = "0.0.0"
 description = "A Python library for parsing and modifying RPF files for GTA IV."
 authors = ["gmroder"]
 license = "MIT"
